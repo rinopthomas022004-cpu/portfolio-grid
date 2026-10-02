@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rino | My Portfolio</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #eef4ff, #f8fbff);
+            color: #222;
+            line-height: 1.6;
+            padding: 30px;
+        }
+
+        .portfolio {
+            max-width: 1100px;
+            margin: auto;
+
+            /* CSS GRID LAYOUT */
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-areas:
+                "hero hero"
+                "about image"
+                "education skills"
+                "websites websites";
+            gap: 24px;
+        }
+
+        .card {
+            background: white;
+            padding: 28px;
+            border-radius: 18px;
+            border: 1px solid #e1e8f0;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease,
+                        box-shadow 0.3s ease,
+                        border-color 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.14);
+            border-color: #4f8cff;
+        }
+
+        .hero {
+            grid-area: hero;
+            text-align: center;
+            padding: 45px 25px;
+            color: white;
+            background: linear-gradient(135deg, #2563eb, #7c3aed);
+            border-radius: 22px;
+            box-shadow: 0 12px 30px rgba(37, 99, 235, 0.25);
+            animation: fadeDown 0.8s ease;
+        }
+
+        .hero h1 {
+            font-size: 42px;
+            letter-spacing: 2px;
+            margin-bottom: 8px;
+        }
+
+        .hero p {
+            font-size: 18px;
+            opacity: 0.95;
+        }
+
+        .about {
+            grid-area: about;
+        }
+
+        .image-card {
+            grid-area: image;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .profile-image {
+            width: 210px;
+            height: 210px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 6px solid #e8efff;
+            box-shadow: 0 10px 25px rgba(37, 99, 235, 0.2);
+            transition: transform 0.4s ease,
+                        border-radius 0.4s ease,
+                        box-shadow 0.4s ease;
+        }
+
+        .profile-image:hover {
+            transform: scale(1.08);
+            border-radius: 25%;
+            box-shadow: 0 15px 35px rgba(37, 99, 235, 0.3);
+        }
+
+        .education {
+            grid-area: education;
+        }
+
+        .skills {
+            grid-area: skills;
+        }
+
+        .websites {
+            grid-area: websites;
+        }
+
+        h2 {
+            color: #2563eb;
+            margin-bottom: 15px;
+            font-size: 25px;
+        }
+
+        .education table {
+            width: 100%;
+            border-collapse: collapse;
+            overflow: hidden;
+            border-radius: 10px;
+        }
+
+        th, td {
+            padding: 13px;
+            text-align: left;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        th {
+            background: #2563eb;
+            color: white;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        tr:hover td {
+            background: #f0f6ff;
+        }
+
+        .skills ul {
+            list-style: none;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        .skills li {
+            background: #f0f6ff;
+            padding: 12px;
+            border-radius: 10px;
+            border-left: 4px solid #2563eb;
+            transition: transform 0.25s ease, background 0.25s ease;
+        }
+
+        .skills li:hover {
+            transform: scale(1.04);
+            background: #e3edff;
+        }
+
+        .links {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+        }
+
+        .links a {
+            display: block;
+            text-align: center;
+            text-decoration: none;
+            color: #2563eb;
+            background: #f5f8ff;
+            border: 2px solid #dbe7ff;
+            padding: 13px;
+            border-radius: 12px;
+            font-weight: bold;
+            transition: transform 0.25s ease,
+                        background 0.25s ease,
+                        color 0.25s ease,
+                        box-shadow 0.25s ease;
+        }
+
+        .links a:hover {
+            transform: translateY(-4px) scale(1.03);
+            background: #2563eb;
+            color: white;
+            box-shadow: 0 8px 18px rgba(37, 99, 235, 0.25);
+        }
+
+        .links a:focus {
+            outline: 3px solid #93c5fd;
+            outline-offset: 3px;
+        }
+
+        @keyframes fadeDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 750px) {
+            body {
+                padding: 15px;
+            }
+
+            .portfolio {
+                grid-template-columns: 1fr;
+                grid-template-areas:
+                    "hero"
+                    "about"
+                    "image"
+                    "education"
+                    "skills"
+                    "websites";
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .links,
+            .skills ul {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <main class="portfolio">
+
+        <header class="hero">
+            <h1>MY PORTFOLIO</h1>
+            <p>Welcome to my personal portfolio</p>
+        </header>
+
+        <section class="card about">
+            <h2>About Me</h2>
+            <p>
+                Hello! My name is Rino.
+                I am a college student interested in computers and technology.
+            </p>
+        </section>
+
+        <section class="card image-card">
+            <img class="profile-image"
+                 src="images/myphoto.jpg"
+                 alt="My Profile Photo">
+        </section>
+
+        <section class="card education">
+            <h2>My Education</h2>
+            <table>
+                <tr>
+                    <th>Course</th>
+                    <th>Institution</th>
+                    <th>Year</th>
+                </tr>
+                <tr>
+                    <td>BCA</td>
+                    <td>My College</td>
+                    <td>2026</td>
+                </tr>
+            </table>
+        </section>
+
+        <section class="card skills">
+            <h2>My Skills</h2>
+            <ul>
+                <li>HTML</li>
+                <li>Computer Programming</li>
+                <li>Database</li>
+                <li>Internet</li>
+            </ul>
+        </section>
+
+        <section class="card websites">
+            <h2>Useful Websites</h2>
+            <div class="links">
+                <a href="https://www.google.com" target="_blank">Google</a>
+                <a href="https://www.wikipedia.org" target="_blank">Wikipedia</a>
+                <a href="https://www.w3schools.com" target="_blank">W3Schools</a>
+            </div>
+        </section>
+
+    </main>
+
+</body>
+</html>
